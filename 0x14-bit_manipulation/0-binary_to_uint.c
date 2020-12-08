@@ -37,24 +37,23 @@ int _len(const char *s)
 /**
  * binary_to_uint - converts a binary number to an unsigned int
  * @b: input string
- * Return: unsigned decimal conversion of input is NULL
+ * Return: unsigned decimal conversion, 0 if input is NULL
  */
 unsigned int binary_to_uint(const char *b)
 {
-	int power = _len(b) - 1;
+	int power;
 	int num = 0;
 
 	if (!b)
 		return (0);
+	power = _len(b) - 1;
 	while (*b)
 	{
 		if (*b != '0' && *b != '1')
 			return (0);
 
-
 		if (*b == '1')
 			num += powX(2, power);
-
 		b++;
 		power--;
 	}
