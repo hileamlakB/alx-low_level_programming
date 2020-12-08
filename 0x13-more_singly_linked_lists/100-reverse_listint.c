@@ -6,14 +6,13 @@
  */
 listint_t *reverse_listint(listint_t **head)
 {
-	listint_t *next_dest = NULL, *tmpd = NULL, *current = NULL, *_head = *head;
+	listint_t *next_dest = NULL, *tmpd = NULL, *current = *head;
 
 	if (!head || !(*head))
 		return (*head);
 
-	next_dest = _head->next;
-	_head->next = NULL;
-	current = _head;
+	next_dest = current->next;
+	current->next = NULL;
 
 	while (next_dest)
 	{
@@ -26,3 +25,8 @@ listint_t *reverse_listint(listint_t **head)
 
 	return (*head);
 }
+
+/*
+*Draw a chart and study this algo
+*
+*/
