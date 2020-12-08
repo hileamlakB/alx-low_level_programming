@@ -6,23 +6,23 @@
  */
 listint_t *reverse_listint(listint_t **head)
 {
-	listint_t *p = NULL, *n = NULL;
+	listint_t *next_dest = NULL, *tmpd = NULL, *current = NULL, *_head = *head;
 
-
-	if(!head || !(*head))
+	if (!head || !(*head))
 		return (*head);
 
-	n = (*head)->next;
+	next_dest = _head->next;
+	_head->next = NULL;
+	current = _head;
 
-	while (n->next)
+	while (next_dest)
 	{
-		n = (*head)->next;
-		(*head)->next = p;
-		p = *head;
-		*head = n;
+		tmpd = next_dest->next;
+		next_dest->next = current;
+		current = next_dest;
+		next_dest = tmpd;
 	}
-	if (n)
-		n->next = p;
+	*head = current;
 
 	return (*head);
 }
