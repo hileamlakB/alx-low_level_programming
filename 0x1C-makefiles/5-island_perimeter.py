@@ -8,9 +8,8 @@ that returns the perimeter of an iland
 
 def island_perimeter(grid):
     """
-        returns the perimeter of the island described in grid:
-
-        @grid is a list of list of integers:
+	Argument
+          @grid is a list of list of integers:
             *0 represents a water zone
             *1 represents a land zone
             *One cell is a square with side length 1
@@ -22,26 +21,23 @@ def island_perimeter(grid):
              one island (or nothing).
             *The island doesn’t have “lakes” (water inside that
              isn’t connected to the water around the island).
+        Returns
+           the perimeter of the island described in grid:
     """
 
-    y = 0
-    x = 0
+    pmeter = 0
 
-    # iterate through possible land mass
     for row in range(1, len(grid) - 1):
         for col in range(1, len(grid[row]) - 1):
             if grid[row][col] == 1:
                 # check if the box is near to the lake
-                # either by left side, right side or both
                 if grid[row][col - 1] == 0:
-                    y += 1 # increment the length of vertical side
+                    pmeter += 1
                 if grid[row][col + 1] == 0:
-                    y += 1
-
-                # check if the box is near to the end/ lake
-                # either by the top of the bottom
+                    pmeter += 1
                 if grid[row - 1][col] == 0:
-                    x += 1 # increment the length of horizontal side
+                    pmeter += 1
                 if grid[row + 1][col] == 0:
-                    x += 1
-    return x + y # return the total length/ perimeter
+                    pmeter += 1
+
+    return pmeter
